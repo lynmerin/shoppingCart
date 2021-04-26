@@ -30,7 +30,7 @@ public class Application {
         rules.add(rule3);
 
         List<Product> shoppingBag = new ArrayList<>();
-        double customerHaveToPay = 0.0d;
+        double customerHaveToPay;
 
         System.out.println("---- Customer 1  ------- \n");
         shoppingBag.add(product1);
@@ -57,13 +57,13 @@ public class Application {
         shoppingBag.add(product3);
         customerHaveToPay = checkoutPlan(rules , shoppingBag);
         System.out.println("---- customerHaveToPay  = " + customerHaveToPay + "\n");
-        System.out.println("--------------------------------------------------------- \n");
+        System.out.println("---------------------------------------------------------- \n");
     }
 
     private static double checkoutPlan(Set<PromotionRule> rules, List<Product> products ){
         Checkout co = new CheckoutImpl(rules);
         System.out.println("---- Shopping Bag ------- \n");
-        products.stream().forEach(product ->{co.scan(product);
+        products.forEach(product ->{co.scan(product);
             System.out.println(" - "+product.getProductId()+" - "+product.getPrice() +" \n");
         });
 
