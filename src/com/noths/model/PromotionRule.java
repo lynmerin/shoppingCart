@@ -1,8 +1,12 @@
 package com.noths.model;
 
-import java.awt.color.ProfileDataException;
 import java.time.LocalDate;
 
+/**
+ * Pojo class which holds common details of all promotion types
+ * ValidFrom and ValidTo determines for what period that promotion is valid.
+ * ValidFrom is considered as mandatory.
+ */
 public class PromotionRule {
     private Product product;
     private LocalDate validFrom;

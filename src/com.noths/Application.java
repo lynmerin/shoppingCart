@@ -2,7 +2,7 @@ package com.noths;
 
 
 import com.noths.model.FinalOfferPromotion;
-import com.noths.model.MultiBuyPromotion;
+import com.noths.model.ProductBasedPromotion;
 import com.noths.model.Product;
 import com.noths.model.PromotionRule;
 import com.noths.service.Checkout;
@@ -23,7 +23,7 @@ public class Application {
         Product product3 = new Product("1003", "Kids T-shirt", 19.95);
 
         Set<PromotionRule> rules = new HashSet<>();
-        PromotionRule rule1 = new MultiBuyPromotion(product1, LocalDate.now(), LocalDate.now().plusDays(10), 16.22, 2 );
+        PromotionRule rule1 = new ProductBasedPromotion(product1, LocalDate.now(), LocalDate.now().plusDays(10), 16.22, 2 );
         PromotionRule rule3 = new FinalOfferPromotion(LocalDate.now(),LocalDate.now().plusDays(15),10.00,60.00 );
 
         rules.add(rule1);
@@ -32,19 +32,24 @@ public class Application {
         List<Product> shoppingBag = new ArrayList<>();
         double customerHaveToPay = 0.0d;
 
+        System.out.println("---- Customer 1  ------- \n");
         shoppingBag.add(product1);
         shoppingBag.add(product2);
         shoppingBag.add(product3);
         customerHaveToPay = checkoutPlan(rules , shoppingBag);
         System.out.println("---- customerHaveToPay  = " + customerHaveToPay + "\n");
+        System.out.println("--------------------------------------------------------- \n");
 
+        System.out.println("---- Customer 2  ------- \n");
         shoppingBag.clear();
         shoppingBag.add(product1);
         shoppingBag.add(product3);
         shoppingBag.add(product1);
         customerHaveToPay = checkoutPlan(rules , shoppingBag);
         System.out.println("---- customerHaveToPay  = " + customerHaveToPay + "\n");
+        System.out.println("--------------------------------------------------------- \n");
 
+        System.out.println("---- Customer 3  ------- \n");
         shoppingBag.clear();
         shoppingBag.add(product1);
         shoppingBag.add(product2);
@@ -52,6 +57,7 @@ public class Application {
         shoppingBag.add(product3);
         customerHaveToPay = checkoutPlan(rules , shoppingBag);
         System.out.println("---- customerHaveToPay  = " + customerHaveToPay + "\n");
+        System.out.println("--------------------------------------------------------- \n");
     }
 
     private static double checkoutPlan(Set<PromotionRule> rules, List<Product> products ){

@@ -2,6 +2,11 @@ package com.noths.model;
 
 import java.util.Objects;
 
+/**
+ * Pojo class which will hold the product details
+ *
+ */
+
 public class Product {
     private String productId;
     private String name ;
@@ -37,6 +42,11 @@ public class Product {
         this.price = price;
     }
 
+    /**
+     * Equals method overriden to compare the productId, price and name
+     * @param o
+     * @return
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -45,6 +55,10 @@ public class Product {
         return Double.compare(product.price, price) == 0 && Objects.equals(productId, product.productId) && Objects.equals(name, product.name);
     }
 
+    /**
+     * Hashcode generated using productId, name and price
+     * @return
+     */
     @Override
     public int hashCode() {
         return Objects.hash(productId, name, price);
